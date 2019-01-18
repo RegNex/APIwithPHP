@@ -34,7 +34,7 @@ class Location
 	{
 		
 		//query to insert
-		$query = "INSERT INTO user_locations SET latlng=:latlng";
+		$query = "INSERT INTO " . $this->table_name . " SET latlng=:latlng";
 
 		$stmt = $this->conn->prepare($query);
 
