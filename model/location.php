@@ -17,7 +17,7 @@ class Location
 	}
 
 
-
+//read function
 	 public function read()
 	{
 		//select all query
@@ -28,6 +28,28 @@ class Location
 
 		return $stmt;
 	}
+
+//create function
+	public function create()
+	{
+		
+		//query to insert
+		$query = "INSERT INTO user_locations SET latlng=:latlng";
+
+		$stmt = $this->conn->prepare($query);
+
+		//sanitize
+		$this->latlng=htmlspecialchars(strip_tags($this->latlng));
+		$stmt->bindParam(":latlng", $this->latlng);
+
+		if ($stmt->execute()) {
+			return true;
+		}
+
+		return false;
+	}
+
+
 }
 
  ?>
